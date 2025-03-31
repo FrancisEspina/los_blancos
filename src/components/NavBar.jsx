@@ -30,7 +30,8 @@ const NavBar = () => {
       </motion.div>
 
       {/* Navbar Top Section */}
-      <div className="fixed flex items-center justify-between w-full p-5 z-20">
+
+      <div className=" fixed flex items-center justify-between w-full p-5 z-10 ">
         {/* Logo */}
         <Link to="/">
           <Bounce>
@@ -46,14 +47,6 @@ const NavBar = () => {
 
         {/* Open Menu Button */}
         <div className="flex gap-5 items-center">
-          {shortLinks.map((link) => (
-            <Bounce>
-              <Link to={link.path}>
-                <div>{link.nav}</div>
-              </Link>
-            </Bounce>
-          ))}
-
           <div className="max-w-12">
             <Bounce>
               <img className="w-full h-full" src={bernabeu} alt="" />
@@ -70,6 +63,8 @@ const NavBar = () => {
           </div>
         </div>
       </div>
+
+      <div className="h-15 xl:h-0"></div>
     </>
   );
 };

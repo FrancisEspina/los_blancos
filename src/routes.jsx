@@ -22,15 +22,16 @@ const routes = [
 ];
 
 export const navLinks = [
+  { nav: "Home", link: "/" },
   { nav: "Los Blancos", link: "/squad" },
-  { nav: "Trophies", link: "/trophies" },
   { nav: "Sponsors", link: "/sponsors" },
   { nav: "RM City", link: "/rm-city" },
 ];
 
 export const shortLinks = [
-  { nav: "Home", link: "/" },
   { nav: "Squad", link: "/squad" },
+  { nav: "Trophies", link: "/trophies" },
+
   { nav: "Matches", link: "/matches" },
 ];
 
