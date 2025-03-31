@@ -1,0 +1,23 @@
+@import "@fontsource-variable/geologica";
+@import "tailwindcss";
+:root {
+  font-family: "Geologica Variable", sans-serif;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.default-container {
+  @apply flex items-center min-h-screen;
+  @apply max-w-[1650px] px-5 mx-auto;
+}
+
+.title {
+  @apply text-[78pt] leading-20 tracking-[-6pt];
+}
+
+.narrow {
+  @apply tracking-tight;
+}
