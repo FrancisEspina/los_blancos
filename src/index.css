@@ -19,5 +19,5 @@
 }
 
 .narrow {
-  @apply tracking-tight;
+  @apply tracking-tighter;
 }

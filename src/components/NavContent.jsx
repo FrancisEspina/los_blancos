@@ -2,19 +2,25 @@ import React from "react";
 import { navLinks } from "../routes";
 import Bounce from "./Bounce";
 import socials from "../data/socials";
-const NavContent = ({ logo }) => {
+import logo from "../../src/assets/icons/real_madrid.png";
+import { Link } from "react-router";
+const NavContent = ({ close }) => {
   return (
     <>
       <div className="relative min-h-screen flex  items-center ">
         <div className="flex flex-col items-center">
           <div className="max-w-50 mb-20">
-            <img className="invert" src={logo} alt="" />
+            <img loading="lazy" className="invert" src={logo} alt="" />
           </div>
           <div className="text-white flex gap-10">
             {navLinks.map((link) => (
               <>
                 <Bounce>
-                  <div className="text-lg">{link.nav}</div>
+                  <Link to={link.path}>
+                    <div onClick={close} className="text-lg ">
+                      {link.nav}
+                    </div>
+                  </Link>
                 </Bounce>
               </>
             ))}

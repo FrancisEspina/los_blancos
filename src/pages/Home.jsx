@@ -1,11 +1,15 @@
 import React from "react";
 import Hero from "../components/HomeComponents/Hero";
-
+import Banner from "../components/HomeComponents/Banner";
+import TrophyBanner from "../components/HomeComponents/TrophyBanner";
+import HomeSquad from "../components/HomeComponents/HomeSquad";
 const Home = () => {
   return (
     <>
       <Hero />
-      <div className="bg-purple-400 min-h-screen"></div>
+      <TrophyBanner />
+      <Banner />
+      <HomeSquad />
     </>
   );
 };
