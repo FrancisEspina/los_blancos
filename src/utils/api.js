@@ -1,7 +1,10 @@
 import axios from "axios";
-const BASE_URL = "/api/teams/86/matches?";
-const API_KEY = import.meta.env.VITE_API_KEY; // Correct way in Vite
+
+// Load environment variables from .env file
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
 const limit = 10;
+
 export const finishedMatches = async () => {
   try {
     const response = await axios.get(
