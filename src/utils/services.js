@@ -236,7 +236,7 @@ export const leagueMapper = (code) => {
       league = "Super League";
       break;
     case "TSL":
-      league = "Süper Lig";
+      league = "Süper Liga";
       break;
     case "UPL":
       league = "Premier Liha";
