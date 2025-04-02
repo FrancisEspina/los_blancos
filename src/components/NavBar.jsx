@@ -43,7 +43,7 @@ const NavBar = () => {
 
       {/* Navbar Top Section */}
 
-      <div className=" fixed flex items-center justify-between backdrop-blur-[10px]  w-full p-5 z-10 border-gray-300 border-b ">
+      <div className=" fixed flex items-center justify-between backdrop-blur-[10px]  w-full p-5 z-20 border-gray-300 border-b ">
         {/* Logo */}
         <div className="flex gap-3 items-center">
           <Link to="/">
@@ -71,14 +71,16 @@ const NavBar = () => {
           </Link>
         </div>
 
-        <div className="flex gap-10">
-          {shortLinks.map((button) => (
-            <>
-              <Link to={button.path}>
-                <Bounce>{button.nav}</Bounce>
-              </Link>
-            </>
-          ))}
+        <div className="hidden xl:block lg:block">
+          <div className="flex gap-10 ">
+            {shortLinks.map((button) => (
+              <>
+                <Link to={button.path}>
+                  <Bounce>{button.nav}</Bounce>
+                </Link>
+              </>
+            ))}
+          </div>
         </div>
         {/* Open Menu Button */}
         <div className="flex gap-5 items-center">

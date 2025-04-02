@@ -2,22 +2,32 @@ import React from "react";
 import { FaGithub, FaLink } from "react-icons/fa";
 import { main_sponsors } from "../../data/sponsors";
 import { Link } from "react-router";
+
+import AOS from "../../utils/AOS";
 const Hero = () => {
   return (
-    <div className="default-container justify-between">
+    <div className="default-container justify-between ">
       <div className="grid lg:grid-cols-2  grid-cols-1 items-center gap-y-12">
         <div>
-          <p>Kings Of Europe</p>
-          <div className="title font-[600] max-w-200">
-            Hala Madrid y nada más
-          </div>
+          <AOS delay={0.2}>
+            <p>Kings Of Europe</p>
+          </AOS>
+          <AOS>
+            <div className="title font-[600] max-w-200">
+              Hala Madrid y nada más
+            </div>
+          </AOS>
         </div>
 
         <div className="text-end w-full">
-          <p className="text-gl narrow  mb-5">Real Madrid CF</p>
+          <AOS>
+            <p className="text-gl narrow  mb-5">Real Madrid CF</p>
+          </AOS>
           <div className="flex  justify-end gap-5 text-[45pt]">
-            {main_sponsors.map((sponsor) => (
-              <sponsor.icon></sponsor.icon>
+            {main_sponsors.map((sponsor, idx) => (
+              <AOS delay={idx / 5}>
+                <sponsor.icon></sponsor.icon>
+              </AOS>
             ))}
           </div>
         </div>

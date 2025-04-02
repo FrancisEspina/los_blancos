@@ -3,6 +3,7 @@ import Hero from "../components/HomeComponents/Hero";
 import Banner from "../components/HomeComponents/Banner";
 import TrophyBanner from "../components/HomeComponents/TrophyBanner";
 import HomeSquad from "../components/HomeComponents/HomeSquad";
+import HomeUpcomingMatches from "../components/HomeComponents/HomeUpcomingMatches";
 const Home = () => {
   return (
     <>
@@ -10,6 +11,7 @@ const Home = () => {
       <TrophyBanner />
       <Banner />
       <HomeSquad />
+      <HomeUpcomingMatches />
     </>
   );
 };

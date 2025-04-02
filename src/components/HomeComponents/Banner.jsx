@@ -1,6 +1,7 @@
 import React from "react";
 import banner_image from "../../assets/images/banner-2.jpg";
 import Button from "../../components/Button";
+import AON from "../../utils/AON";
 const Banner = () => {
   return (
     <>
@@ -11,17 +12,26 @@ const Banner = () => {
           </div>
           <div className=" p-5 flex items-center ">
             <div>
-              <div className="narrow text-[32pt] font-[600]">Real Madrid</div>
-              <p className="text-lg narrow">More than a Club</p>
+              <AON>
+                <div className="narrow text-[32pt] font-[600]">Real Madrid</div>
+              </AON>
+              <AON>
+                <p className="text-lg narrow">More than a Club</p>
+              </AON>
               <br />
-              <p className="font-light">
-                Real Madrid CF, founded in 1902, is one of the most successful
-                football clubs in history. Based in Madrid, Spain, the club has
-                won a record number of UEFA Champions League and La Liga titles.
-                Known as <span className="font-bold">Los Blancos</span>.
-              </p>
+              <AON>
+                <p className="font-light">
+                  Real Madrid CF, founded in 1902, is one of the most successful
+                  football clubs in history. Based in Madrid, Spain, the club
+                  has won a record number of UEFA Champions League and La Liga
+                  titles. Known as{" "}
+                  <span className="font-bold">Los Blancos</span>.
+                </p>
+              </AON>
               <br />
-              <Button title="The Club" />
+              <AON>
+                <Button title="The Club" />
+              </AON>
             </div>
           </div>
         </div>

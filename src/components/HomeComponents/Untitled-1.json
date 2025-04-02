@@ -1,0 +1,53 @@
+{
+  "match": {
+    "area": {
+      "id": 2224,
+      "name": "Spain",
+      "code": "ESP",
+      "flag": "https://crests.football-data.org/760.svg"
+    },
+    "competition": {
+      "id": 2014,
+      "name": "Primera Division",
+      "code": "PD",
+      "type": "LEAGUE",
+      "emblem": "https://crests.football-data.org/laliga.png"
+    },
+    "season": {
+      "id": 2292,
+      "startDate": "2024-08-18",
+      "endDate": "2025-05-25",
+      "currentMatchday": 29,
+      "winner": null
+    },
+    "id": 498909,
+    "utcDate": "2025-04-05T14:15:00Z",
+    "status": "TIMED",
+    "matchday": 30,
+    "stage": "REGULAR_SEASON",
+    "group": null,
+    "lastUpdated": "2025-04-02T15:21:01Z",
+    "homeTeam": {
+      "id": 86,
+      "name": "Real Madrid CF",
+      "shortName": "Real Madrid",
+      "tla": "RMA",
+      "crest": "https://crests.football-data.org/86.png"
+    },
+    "awayTeam": {
+      "id": 95,
+      "name": "Valencia CF",
+      "shortName": "Valencia",
+      "tla": "VAL",
+      "crest": "https://crests.football-data.org/95.png"
+    },
+    "score": {
+      "winner": null,
+      "duration": "REGULAR",
+      "fullTime": { "home": null, "away": null },
+      "halfTime": { "home": null, "away": null }
+    },
+    "odds": { "msg": "Activate Odds-Package in User-Panel to retrieve odds." },
+    "referees": []
+  }
+}
