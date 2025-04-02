@@ -12,14 +12,22 @@ import { expiredDate, leagueMapper } from "../../utils/services";
 const HomeUpcomingMatches = () => {
   const now = new Date();
   let [upcoming, setUpcoming] = useState([]);
+
   useEffect(() => {
     const fetchMatches = async () => {
       const cachedMatches = localStorage.getItem("upcomingMatches");
-      const finalMatches = JSON.parse(cachedMatches);
 
-      if (expiredDate(finalMatches[0].utcDate, now)) {
-        console.log("Fixtures are Already Updated");
-        setUpcoming(finalMatches); // Load from cache
+      if (cachedMatches) {
+        const finalMatches = JSON.parse(cachedMatches);
+        if (expiredDate(finalMatches[0].utcDate, now)) {
+          console.log("Fixtures are Already Updated");
+          setUpcoming(finalMatches); // Load from cache
+        } else {
+          console.log("Fixtures Updated");
+          const matches = await upcomingMatches();
+          setUpcoming(matches || []);
+          localStorage.setItem("upcomingMatches", JSON.stringify(matches)); // Cache result
+        }
       } else {
         console.log("Fixtures Updated");
         const matches = await upcomingMatches();
