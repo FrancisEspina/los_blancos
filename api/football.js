@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const API_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   // Set CORS headers
