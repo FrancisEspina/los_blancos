@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import handler from "../../../api/football";
 // Import Swiper React components
 import { formatDate } from "../../utils/services";
 import { Pagination } from "swiper/modules";
@@ -14,9 +14,7 @@ const HomeUpcomingMatches = () => {
   const now = new Date();
   let [upcoming, setUpcoming] = useState([]);
   useEffect(() => {
-    axios.get("/api/football").then((res) => {
-      console.log("Match Data:", res.data);
-    });
+    console.log("API ROUTE");
   }, []);
 
   return (
