@@ -15,18 +15,19 @@ const HomeUpcomingMatches = () => {
   let [upcoming, setUpcoming] = useState([]);
   useEffect(() => {
     const fetchMatches = async () => {
-      const cachedMatches = localStorage.getItem("upcomingMatches");
-      const finalMatches = JSON.parse(cachedMatches);
+      // const cachedMatches = localStorage.getItem("upcomingMatches");
+      // const finalMatches = JSON.parse(cachedMatches);
+      // if (expiredDate(finalMatches[0].utcDate, now)) {
+      //   console.log("Fixtures are Already Updated");
+      //   setUpcoming(finalMatches); // Load from cache
+      // } else {
+      //   console.log("Fixtures Updated");
+      //   const matches = await upcomingMatches();
+      //   setUpcoming(matches || []);
+      //   localStorage.setItem("upcomingMatches", JSON.stringify(matches)); // Cache result
+      // }
 
-      if (expiredDate(finalMatches[0].utcDate, now)) {
-        console.log("Fixtures are Already Updated");
-        setUpcoming(finalMatches); // Load from cache
-      } else {
-        console.log("Fixtures Updated");
-        const matches = await upcomingMatches();
-        setUpcoming(matches || []);
-        localStorage.setItem("upcomingMatches", JSON.stringify(matches)); // Cache result
-      }
+      const matches = upcomingMatches();
     };
 
     fetchMatches();
@@ -77,13 +78,13 @@ const HomeUpcomingMatches = () => {
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
             >
-              {upcoming.map((match) => (
+              {/* {upcoming.map((match) => (
                 <>
                   <SwiperSlide>
                     <Card match={match} />
                   </SwiperSlide>
                 </>
-              ))}
+              ))} */}
             </Swiper>
 
             {/* </div> */}
