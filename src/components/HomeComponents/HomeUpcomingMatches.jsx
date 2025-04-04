@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 // Import Swiper React components
-import { formatDate } from "../../utils/services";
+
+import { expiredDate, formatDate, leagueMapper } from "../../utils/services";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { leagueMapper } from "../../utils/services";
 import { getMatches } from "../../utils/api";
 
 const HomeUpcomingMatches = () => {
@@ -13,9 +13,21 @@ const HomeUpcomingMatches = () => {
   let [upcoming, setUpcoming] = useState([]);
   useEffect(() => {
     const fetchMatches = async () => {
+      let matches = JSON.parse(localStorage.getItem("scheduledMatches"));
+
+      if (matches) {
+        if (expiredDate(matches[0].utcDate, now)) {
+          console.log("DATA IS UP TO DATE");
+          let scheduled = JSON.parse(localStorage.getItem("scheduledMatches"));
+          setUpcoming(scheduled);
+          return;
+        } else {
+        }
+      }
+      console.log("UPDTED MATCHES");
       let scheduled = await getMatches("SCHEDULED");
       localStorage.setItem("scheduledMatches", JSON.stringify(scheduled));
-      console.log(scheduled);
+      setUpcoming(scheduled);
     };
 
     fetchMatches();
@@ -66,13 +78,13 @@ const HomeUpcomingMatches = () => {
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
             >
-              {/* {upcoming.map((match) => (
+              {upcoming.map((match) => (
                 <>
                   <SwiperSlide>
                     <Card match={match} />
                   </SwiperSlide>
                 </>
-              ))} */}
+              ))}
             </Swiper>
 
             {/* </div> */}
