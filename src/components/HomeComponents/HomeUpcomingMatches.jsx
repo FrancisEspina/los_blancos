@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { upcomingMatches } from "../../utils/api";
 
 // Import Swiper React components
 import { formatDate } from "../../utils/services";
@@ -7,6 +6,7 @@ import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import axios from "axios";
 
 import { expiredDate, leagueMapper } from "../../utils/services";
 
@@ -14,23 +14,9 @@ const HomeUpcomingMatches = () => {
   const now = new Date();
   let [upcoming, setUpcoming] = useState([]);
   useEffect(() => {
-    const fetchMatches = async () => {
-      // const cachedMatches = localStorage.getItem("upcomingMatches");
-      // const finalMatches = JSON.parse(cachedMatches);
-      // if (expiredDate(finalMatches[0].utcDate, now)) {
-      //   console.log("Fixtures are Already Updated");
-      //   setUpcoming(finalMatches); // Load from cache
-      // } else {
-      //   console.log("Fixtures Updated");
-      //   const matches = await upcomingMatches();
-      //   setUpcoming(matches || []);
-      //   localStorage.setItem("upcomingMatches", JSON.stringify(matches)); // Cache result
-      // }
-
-      const matches = upcomingMatches();
-    };
-
-    fetchMatches();
+    axios.get("/api/football").then((res) => {
+      console.log("Match Data:", res.data);
+    });
   }, []);
 
   return (
