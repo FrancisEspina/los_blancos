@@ -6,18 +6,20 @@ import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import axios from "axios";
-
-import { expiredDate, leagueMapper } from "../../utils/services";
+import { leagueMapper } from "../../utils/services";
+import { getMatches } from "../../utils/api";
 
 const HomeUpcomingMatches = () => {
   const now = new Date();
   let [upcoming, setUpcoming] = useState([]);
   useEffect(() => {
-    axios
-      .get("https://los-blancos-iota.vercel.app/api/football")
-      .then((res) => console.log(res.data))
-      .catch((err) => console.error("Error:", err));
+    const fetchMatches = async () => {
+      let scheduled = await getMatches("SCHEDULED");
+      localStorage.setItem("scheduledMatches", JSON.stringify(scheduled));
+      console.log(scheduled);
+    };
+
+    fetchMatches();
   }, []);
 
   return (

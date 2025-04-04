@@ -1,19 +1,22 @@
 export default async function handler(req, res) {
-  const API_URL = "https://api.football-data.org/v4/matches";
-  const API_KEY = "898ccbc228804b32b9362871084ecded";
+  const API_URL = import.meta.env.VITE_BASE_URL;
+  const API_KEY = import.meta.env.VITE_API_KEY;
 
   // Set CORS headers
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // Handle preflight request
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
+  // Build query string from incoming request (e.g. status=FINISHED)
+  const queryString = new URLSearchParams(req.query).toString();
+  const fullUrl = `${BASE_URL}${queryString ? `?${queryString}` : ""}`;
+
   try {
-    const response = await fetch(API_URL, {
+    const response = await fetch(fullUrl, {
       headers: {
         "X-Auth-Token": API_KEY,
       },
