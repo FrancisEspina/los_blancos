@@ -14,7 +14,10 @@ const HomeUpcomingMatches = () => {
   const now = new Date();
   let [upcoming, setUpcoming] = useState([]);
   useEffect(() => {
-    console.log("API ROUTE");
+    axios
+      .get("https://los-blancos-iota.vercel.app/api/football")
+      .then((res) => console.log(res.data))
+      .catch((err) => console.error("Error:", err));
   }, []);
 
   return (
