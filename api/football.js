@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   const BASE_URL = process.env.VITE_BASE_URL;
-  const API_KEY = process.env.VITE_API_KEY;
+  const API_KEY = "898ccbc228804b32b9362871084ecded";
 
   // Set CORS headers
   res.setHeader("Access-Control-Allow-Origin", "*");
