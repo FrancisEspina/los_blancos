@@ -28,6 +28,11 @@ const HomeUpcomingMatches = () => {
       <div className="min-h-[60vh] max-w-[1600px] mx-auto  my-12 flex items-center">
         <div className="w-full">
           <div className="narrow font-bold text-3xl mx-5 ">Upcoming</div>
+          <div>
+            {import.meta.env.VITE_BASE_URL
+              ? import.meta.env.VITE_BASE_URL
+              : "None"}
+          </div>
           <div className="w-full  ">
             {/* <div>{upcoming && JSON.stringify(upcoming[0])}</div> */}
             <br />
