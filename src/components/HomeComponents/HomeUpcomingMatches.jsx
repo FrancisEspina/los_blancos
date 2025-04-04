@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 // Import Swiper React components
-
+import { swiperSettings } from "../../utils/swiperSettings";
 import { expiredDate, formatDate, leagueMapper } from "../../utils/services";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { getMatches } from "../../utils/api";
-
+import ButtonLink from "../ButtonLink";
 const HomeUpcomingMatches = () => {
   const now = new Date();
   let [upcoming, setUpcoming] = useState([]);
@@ -35,59 +35,37 @@ const HomeUpcomingMatches = () => {
 
   return (
     <>
-      <div></div>
       <div className="min-h-[60vh] max-w-[1600px] mx-auto  my-12 flex items-center">
         <div className="w-full">
-          <div className="narrow font-bold text-3xl mx-5 ">Upcoming</div>
+          <div className="flex items-center justify-between mx-5 ">
+            <div className="narrow font-bold text-3xl ">Upcoming Matches</div>
+            <div className="text-end">
+              <p className="font-light text-[9pt] leading-2 ">
+                Match Data from
+              </p>
+              <a href="https://www.football-data.org/" className="text-[11pt]">
+                football-data.org
+              </a>
+            </div>
+          </div>
           <div className="w-full  ">
-            {/* <div>{upcoming && JSON.stringify(upcoming[0])}</div> */}
             <br />
-
-            {/* <div className="flex gap-10"> */}
             <Swiper
-              pagination={{
-                dynamicBullets: true,
-              }}
-              modules={[Pagination]}
-              style={{ padding: "20px 0px 50px 0px" }}
-              spaceBetween={5}
-              slidesPerView={4}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 5,
-                },
-                480: {
-                  slidesPerView: 1,
-                  spaceBetween: 5,
-                },
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 5,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 5,
-                },
-
-                1600: {
-                  slidesPerView: 4,
-                  spaceBetween: 5,
-                },
-              }}
+              {...swiperSettings}
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
             >
               {upcoming.map((match) => (
                 <>
                   <SwiperSlide>
-                    <Card match={match} />
+                    <MatchCard match={match} />
                   </SwiperSlide>
                 </>
               ))}
             </Swiper>
-
-            {/* </div> */}
+          </div>
+          <div className="w-fit ml-auto mx-5">
+            <ButtonLink path={"/matches"} title="View All Matches" />
           </div>
         </div>
       </div>
@@ -95,7 +73,7 @@ const HomeUpcomingMatches = () => {
   );
 };
 
-const Card = ({ match }) => {
+export const MatchCard = ({ match }) => {
   return (
     <>
       <div className="hover:scale-101 cursor-pointer min-w-[320px] max-w-[800px] mx-5 flex-grow duration-300 hover:shadow-lg shadow-indigo-600/50 bg-gray-100/50 rounded-2xl overflow-hidden ">
@@ -127,7 +105,6 @@ const Card = ({ match }) => {
             </p>
           </div>
         </div>
-
         <div className="flex justify-between items-center bg-black/2 rounded-t-2xl p-5">
           <div>
             <p className="text-[9pt]">Home</p>

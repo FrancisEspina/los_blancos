@@ -32,7 +32,7 @@ const HomeSquad = () => {
               </AON>
             </div>
             <div className="flex">
-              <div className="max-w-[1000px] mx-auto col-span-2 hover:scale-105 duration-400 cursor-auto ">
+              <div className="xl:max-w-[1200px] lg:max-w-[900px] max-w-[600px]  mx-auto col-span-2 hover:scale-105 duration-400 cursor-auto ">
                 <img
                   src={mbappe}
                   className="object-contain w-full h-full"

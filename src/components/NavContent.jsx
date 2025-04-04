@@ -15,13 +15,13 @@ const NavContent = ({ close }) => {
           <div className="text-white flex gap-10">
             {navLinks.map((link) => (
               <>
-                <Bounce>
-                  <Link to={link.path}>
+                <Link to={link.path}>
+                  <Bounce>
                     <div onClick={close} className="text-lg ">
                       {link.nav}
                     </div>
-                  </Link>
-                </Bounce>
+                  </Bounce>
+                </Link>
               </>
             ))}
           </div>

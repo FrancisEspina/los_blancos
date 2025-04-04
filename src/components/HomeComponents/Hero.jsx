@@ -6,11 +6,13 @@ import { Link } from "react-router";
 import AOS from "../../utils/AOS";
 const Hero = () => {
   return (
-    <div className="default-container justify-between ">
-      <div className="grid lg:grid-cols-2  grid-cols-1 items-center gap-y-12">
+    <div className="default-container justify-between  ">
+      <div className="grid lg:grid-cols-2 max-w-[1400px] bg-red- mx-auto  grid-cols-1 items-center gap-y-12">
         <div>
           <AOS delay={0.2}>
-            <p>Kings Of Europe</p>
+            <div className="bg-black w-fit text-white px-2 py-1 mb-1">
+              <p>Kings Of Europe</p>
+            </div>
           </AOS>
           <AOS>
             <div className="title font-[600] max-w-200">

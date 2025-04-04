@@ -30,7 +30,7 @@ const Banner = () => {
               </AON>
               <br />
               <AON>
-                <Button title="The Club" />
+                <Button path={"/the-club"} title="The Club" />
               </AON>
             </div>
           </div>

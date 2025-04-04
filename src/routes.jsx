@@ -2,14 +2,19 @@ import Home from "./pages/Home";
 
 import { Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import { div, path } from "motion/react-client";
-import { ScrollRestoration } from "react-router-dom";
 
+import Matches from "./pages/Matches";
+
+import { ScrollRestoration } from "react-router-dom";
+import Footer from "../src/components/Footer";
 const Layout = () => (
   <>
     <ScrollRestoration />
     <NavBar />
-    <Outlet />
+    <div className="min-h-screen">
+      <Outlet />
+    </div>
+    <Footer />
   </>
 );
 
@@ -22,7 +27,7 @@ const routes = [
       { path: "/squad", element: <div>SQUAD</div> },
       { path: "/the-club", element: <div>CLUB</div> },
       { path: "/trophies", element: <div>TROPHIES</div> },
-      { path: "/matches", element: <div>MATCHES</div> },
+      { path: "/matches", element: <Matches /> },
       { path: "/sponsors", element: <div>SPONSORS</div> },
       { path: "/rm-city", element: <div>RM-CITY</div> },
     ],

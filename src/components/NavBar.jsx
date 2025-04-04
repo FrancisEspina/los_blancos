@@ -19,11 +19,11 @@ const NavBar = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 50, x: "-100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 1, x: "-100%" }}
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
             transition={{
-              duration: 0.4, // Slower transition
+              duration: 0.4,
               ease: [0.33, 0.71, 0.2, 1.01],
             }}
             className="fixed inset-0 bg-indigo-800 z-50 flex flex-col items-center justify-center"
@@ -31,7 +31,7 @@ const NavBar = () => {
             <NavContent close={close} />
             <div
               onClick={() => setOpen(false)} // Close menu on click
-              className="absolute top-10 right-10 text-white text-3xl cursor-pointer"
+              className="absolute top-5 right-5 text-white text-3xl cursor-pointer"
             >
               <Bounce>
                 <PiX size={40} />

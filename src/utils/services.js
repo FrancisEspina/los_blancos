@@ -1,3 +1,5 @@
+import { getMatches } from "./api";
+
 export const formatDate = (utcString) => {
   const date = new Date(utcString);
 
@@ -23,6 +25,24 @@ export const expiredDate = (matchDate, now) => {
   } else {
     return false;
   }
+};
+
+export const fetchMatches = async ({ category }) => {
+  const now = new Date();
+  let matches = JSON.parse(localStorage.getItem("scheduledMatches"));
+  let scheduled = "";
+  if (matches) {
+    if (expiredDate(matches[0].utcDate, now)) {
+      console.log("DATA IS UP TO DATE");
+      scheduled = JSON.parse(localStorage.getItem("scheduledMatches"));
+      return scheduled;
+    } else {
+    }
+  }
+  console.log("UPDTED MATCHES");
+  scheduled = await getMatches(category);
+  localStorage.setItem("scheduledMatches", JSON.stringify(scheduled));
+  return scheduled;
 };
 
 export const leagueMapper = (code) => {
