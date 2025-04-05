@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 // Import Swiper React components
 import { swiperSettings } from "../../utils/swiperSettings";
-import { expiredDate, formatDate, leagueMapper } from "../../utils/services";
+import {
+  expiredDate,
+  fetchMatches,
+  formatDate,
+  leagueMapper,
+} from "../../utils/services";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,29 +14,16 @@ import "swiper/css/pagination";
 import { getMatches } from "../../utils/api";
 import ButtonLink from "../ButtonLink";
 const HomeUpcomingMatches = () => {
-  const now = new Date();
   let [upcoming, setUpcoming] = useState([]);
+  const now = new Date();
   useEffect(() => {
-    const fetchMatches = async () => {
-      let matches = JSON.parse(localStorage.getItem("scheduledMatches"));
+    async function fetchData() {
+      const response_scheduled = await fetchMatches("SCHEDULED", now);
+      setUpcoming(response_scheduled);
+    }
 
-      if (matches) {
-        if (expiredDate(matches[0].utcDate, now)) {
-          console.log("DATA IS UP TO DATE");
-          let scheduled = JSON.parse(localStorage.getItem("scheduledMatches"));
-          setUpcoming(scheduled);
-          return;
-        } else {
-        }
-      }
-      console.log("UPDTED MATCHES");
-      let scheduled = await getMatches("SCHEDULED");
-      localStorage.setItem("scheduledMatches", JSON.stringify(scheduled));
-      setUpcoming(scheduled);
-    };
-
-    fetchMatches();
-  }, []);
+    fetchData();
+  }, []); // Or [] if effect doesn't need props or state
 
   return (
     <>

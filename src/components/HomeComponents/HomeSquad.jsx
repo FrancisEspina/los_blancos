@@ -11,7 +11,7 @@ const HomeSquad = () => {
   };
   return (
     <>
-      <div className="xl:min-h-[100vh]   lg:min-h-[90vh] min-h-[60vh]   relative flex items-center">
+      <div className="xl:min-h-[100vh]  lg:min-h-[90vh] min-h-[60vh]   relative flex items-center">
         <div className="justify-center max-w-[1600px] mx-auto absolute inset-0 z-10">
           <div className=" ">
             <div className="max-w-[500px] mx-5">

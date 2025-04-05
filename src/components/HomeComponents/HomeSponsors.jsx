@@ -57,7 +57,7 @@ const HomeSponsors = () => {
 export const LogoContainer = ({ sponsor }) => {
   return (
     <>
-      <div className=" not-hover:grayscale size-40 hover:shadow-xl duration-200 shadow-indigo-600/15 rounded-2xl p-5 ">
+      <div className=" not-hover:grayscale w-30 hover:shadow-xl duration-200 shadow-indigo-600/15 rounded-2xl p-5 ">
         <img src={sponsor} className="h-full w-full object-contain" alt="" />
       </div>
     </>

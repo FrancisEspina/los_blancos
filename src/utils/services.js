@@ -6,7 +6,7 @@ export const formatDate = (utcString) => {
   // Format options
   const options = {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
     hour: "2-digit",
     minute: "2-digit",
@@ -27,22 +27,30 @@ export const expiredDate = (matchDate, now) => {
   }
 };
 
-export const fetchMatches = async ({ category }) => {
-  const now = new Date();
-  let matches = JSON.parse(localStorage.getItem("scheduledMatches"));
-  let scheduled = "";
-  if (matches) {
+export const fetchMatches = async (
+  category = "SCHEDULED",
+  now,
+  need_restart = false
+) => {
+  let matches = "";
+  try {
+    matches = JSON.parse(sessionStorage.getItem(category));
+  } catch (error) {
+    matches = null;
+  }
+
+  if (matches && !need_restart && matches != undefined) {
     if (expiredDate(matches[0].utcDate, now)) {
       console.log("DATA IS UP TO DATE");
-      scheduled = JSON.parse(localStorage.getItem("scheduledMatches"));
-      return scheduled;
-    } else {
+      let fetchedMatches = JSON.parse(sessionStorage.getItem(category));
+      return fetchedMatches;
     }
   }
-  console.log("UPDTED MATCHES");
-  scheduled = await getMatches(category);
-  localStorage.setItem("scheduledMatches", JSON.stringify(scheduled));
-  return scheduled;
+  console.log("UPDATED MATCHES");
+  console.log(category);
+  let fetchedMatches = await getMatches(category.toUpperCase());
+  sessionStorage.setItem(category, JSON.stringify(fetchedMatches));
+  return fetchedMatches;
 };
 
 export const leagueMapper = (code) => {
