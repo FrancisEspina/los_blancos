@@ -4,7 +4,7 @@ const limit = 10;
 
 export const getMatches = async (category) => {
   try {
-    const response = await axios.get(vercel_url + "/football", {
+    const response = await axios.get(vercel_url, {
       params: {
         status: category,
         limit: limit,
@@ -22,7 +22,7 @@ export const getStandings = async (division) => {
   division = "PD";
   try {
     const response = await axios.get(
-      vercel_url + `/standings?${division}/standings`
+      import.meta.env.VITE_VERCEL_URL + `/standings?${division}/standings`
     );
     console.log(response);
   } catch (error) {
