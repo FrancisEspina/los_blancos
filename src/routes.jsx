@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar";
 
 import Matches from "./pages/Matches";
+import Standings from "./pages/Standings";
 
 import { ScrollRestoration } from "react-router-dom";
 import Footer from "../src/components/Footer";
@@ -30,6 +31,7 @@ const routes = [
       { path: "/matches", element: <Matches /> },
       { path: "/sponsors", element: <div>SPONSORS</div> },
       { path: "/rm-city", element: <div>RM-CITY</div> },
+      { path: "/standings", element: <Standings /> },
     ],
   },
 ];

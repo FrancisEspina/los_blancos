@@ -18,7 +18,7 @@ const ButtonLink = ({ title = "Link", path }) => {
           >
             <span className="flex items-center">
               <RiArrowRightSFill size={25} />
-              <div>{title}</div>
+              <div className="text-[9pt] md:text-[10pt]">{title}</div>
             </span>
           </motion.div>
         </Bounce>

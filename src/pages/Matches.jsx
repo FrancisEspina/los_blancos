@@ -10,6 +10,8 @@ import { MatchCard } from "../components/HomeComponents/HomeUpcomingMatches";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { swiperSettings } from "../utils/swiperSettings";
 import { motion } from "motion/react";
+import { PiList } from "react-icons/pi";
+import { Link } from "react-router";
 const Matches = () => {
   const buttons = ["Scheduled", "Finished"];
   let [selectedButton, setButton] = useState(buttons[0]);
@@ -26,7 +28,13 @@ const Matches = () => {
         expiredDate(response_scheduled[0].utcDate, now)
       ) {
         console.log(response_scheduled);
-        const response_finished = await fetchMatches("FINISHED", now, true);
+        const response_finished = await fetchMatches(
+          "FINISHED",
+          now,
+          true,
+          "asc"
+        );
+        response_finished.reverse();
         setFinished(response_finished);
       } else {
         let finishedMatches = JSON.parse(sessionStorage.getItem("FINISHED"));
@@ -43,8 +51,8 @@ const Matches = () => {
 
       <div className="">
         <div className="max-w-[1600px] mx-auto pb-12">
-          <div className="place-items-end">
-            <div className="flex gap-3  ring-2 ring-indigo-100 w-fit p-[7px] rounded-xl mx-5">
+          <div className="justify-end items-center gap-2 flex mx-5">
+            <div className="flex gap-2  ring-2 ring-indigo-100 w-fit p-[7px] rounded-xl ">
               {buttons.map((button) => (
                 <>
                   <motion.div
@@ -59,7 +67,18 @@ const Matches = () => {
                 </>
               ))}
             </div>
+
+            <Link to={"/standings"}>
+              <motion.div
+                whileTap={{ scale: 0.9 }}
+                className={` bg-indigo-600 rounded-[9px] text-white text-[8pt] duration-300 cursor-pointer p-[10px] flex items-center gap-1`}
+              >
+                <PiList size={10} />
+                <div>Standings</div>
+              </motion.div>
+            </Link>
           </div>
+
           <br />
 
           {selectedButton == "Scheduled" ? (
@@ -102,7 +121,8 @@ const LastMatch = ({ finished }) => {
           />
         </div>
         <div className="xl:max-w-30 max-w-15 place-items-center">
-          <div className="mb-2">Home</div>
+          <div className="text-[9pt] md:text-[12pt] mb-2">Home</div>
+
           <img
             className="object-contain"
             src={finished[0] && finished[0].homeTeam.crest}
@@ -136,6 +156,9 @@ const LastMatch = ({ finished }) => {
               <div className="hidden lg:block text-[9pt] bg-black text-white rounded-lg p-1">
                 {finished[0] && formatDate(finished[0].utcDate)}
               </div>
+              <div className="p-2 text-[8pt] hidden md:block">
+                MATCHDAY {finished[0].matchday}
+              </div>
             </div>
             <div
               className={`lg:text-[50pt] text-[32pt]  font-bold ${
@@ -149,7 +172,8 @@ const LastMatch = ({ finished }) => {
           </div>
         </div>
         <div className="xl:max-w-30 max-w-15 place-items-center">
-          <div className="mb-2">Away</div>
+          <div className="text-[9pt] md:text-[12pt] mb-2">Away</div>
+
           <img
             className="object-contain"
             src={finished[0] && finished[0].awayTeam.crest}
@@ -171,21 +195,35 @@ const FinishedMatch = ({ finished }) => {
       </div>
 
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-5">
-        {finished.map((match) => (
+        {finished.slice(1).map((match) => (
           <>
             <div className="shadow-indigo-600/50 bg-gray-100/50 rounded-xl p-7 hover:scale-101 hover:shadow-lg duration-200 ">
-              <div className="narrow text-[9pt] flex gap-1 items-center text-gray-500 narrow font-bold">
-                <img
-                  src={match.competition.emblem}
-                  className="max-w-5"
-                  alt=""
-                />
-                {leagueMapper(match.competition.code)}
+              <div className="flex justify-between items-center">
+                <div className="narrow text-[9pt] flex gap-1 items-center text-gray-500 narrow font-bold">
+                  <img
+                    src={match.competition.emblem}
+                    className="max-w-5"
+                    alt=""
+                  />
+                  {leagueMapper(match.competition.code)}
+                </div>
+
+                <div className="text-[8pt] text-gray-500">
+                  {" "}
+                  MATCHDAY {match.matchday}
+                </div>
               </div>
               <div className="flex justify-between items-center p-8">
                 <div className="place-items-center">
-                  <div>Home</div>
-                  <img src={match.homeTeam.crest} className="max-w-15" alt="" />
+                  <div className="text-[9pt] md:text-[9.5pt] text-gray-700 mb-2">
+                    Home
+                  </div>
+                  <img
+                    src={match.homeTeam.crest}
+                    loading="lazy"
+                    className="max-w-15"
+                    alt=""
+                  />
                   <div>{match.homeTeam.tla}</div>
                 </div>
                 <div className="flex gap-5 text-[24pt] font-bold">
@@ -194,9 +232,22 @@ const FinishedMatch = ({ finished }) => {
                   <div>{match.score.fullTime.away}</div>
                 </div>
                 <div className="place-items-center">
-                  <div>Away</div>
-                  <img src={match.awayTeam.crest} className="max-w-15" alt="" />
+                  <div className="text-[9pt] md:text-[9.5pt] text-gray-700 mb-2">
+                    Away
+                  </div>
+
+                  <img
+                    src={match.awayTeam.crest}
+                    loading="lazy"
+                    className="max-w-15"
+                    alt=""
+                  />
                   <div>{match.awayTeam.tla}</div>
+                </div>
+              </div>
+              <div className="text-center  text-gray-700 place-items-center">
+                <div className="w-fit bg-black/10 px-2 py-1 rounded-xl text-[8pt]">
+                  {formatDate(match.utcDate)}
                 </div>
               </div>
             </div>
