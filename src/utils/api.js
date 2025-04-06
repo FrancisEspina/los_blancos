@@ -1,10 +1,10 @@
 import axios from "axios";
-
+const vercel_url = import.meta.env.VITE_VERCEL_URL;
 const limit = 10;
 
 export const getMatches = async (category) => {
   try {
-    const response = await axios.get(import.meta.env.VITE_VERCEL_URL, {
+    const response = await axios.get(vercel_url + "/football", {
       params: {
         status: category,
         limit: limit,
@@ -22,7 +22,7 @@ export const getStandings = async (division) => {
   division = "PD";
   try {
     const response = await axios.get(
-      import.meta.env.VITE_VERCEL_URL + `/standings?${division}/standings`
+      vercel_url + `/standings?${division}/standings`
     );
     console.log(response);
   } catch (error) {
