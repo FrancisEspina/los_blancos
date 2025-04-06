@@ -22,12 +22,14 @@ export const getMatches = async (category) => {
 };
 
 export const getStandings = async (division) => {
+  division = "PD";
   try {
     const response = await axios.get(
       import.meta.env.VITE_VERCEL_URL + `/standings?${division}/standings`
     );
     console.log(response);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-getStandings();

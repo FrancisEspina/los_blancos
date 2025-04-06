@@ -1,6 +1,5 @@
 export default async function handler(req, res) {
-  const BASE_URL =
-"https://api.football-data.org//v4/competitions/";
+  const BASE_URL = "https://api.football-data.org//v4/competitions/";
   const API_KEY = process.env.VITE_API_KEY;
 
   // Set CORS headers
@@ -13,8 +12,11 @@ export default async function handler(req, res) {
   }
 
   // Build query string from incoming request (e.g. status=FINISHED)
-  const queryString = new URLSearchParams(req.query).toString();
-  const fullUrl = `${BASE_URL}${queryString ? `?${queryString}` : ""}`;
+  const { competition = "", ...query } = req.query;
+  const queryString = new URLSearchParams(query).toString();
+  const fullUrl = `${BASE_URL}${competition}/standings${
+    queryString ? `?${queryString}` : ""
+  }`;
 
   try {
     const response = await fetch(fullUrl, {
