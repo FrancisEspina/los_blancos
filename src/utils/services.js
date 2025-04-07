@@ -1,4 +1,4 @@
-import { getMatches } from "./api";
+import { getMatches, getStandings } from "./api";
 
 export const formatDate = (utcString) => {
   const date = new Date(utcString);
@@ -16,6 +16,18 @@ export const formatDate = (utcString) => {
   return date.toLocaleString("en-US", options);
 };
 
+export const formatYear = (utcString) => {
+  const date = new Date(utcString);
+
+  // Format options
+  const options = {
+    year: "numeric",
+    hour12: false,
+  };
+
+  return date.toLocaleString("en-US", options);
+};
+
 export const expiredDate = (matchDate, now) => {
   const match = new Date(matchDate);
   const today = new Date(now);
@@ -25,6 +37,32 @@ export const expiredDate = (matchDate, now) => {
   } else {
     return false;
   }
+};
+
+export const fetchStandings = async (division) => {
+  let standings = "";
+  let fetchedStandingData = null;
+  try {
+    standings = JSON.parse(sessionStorage.getItem(division));
+  } catch (error) {
+    standings = null;
+  }
+
+  if (standings && standings != undefined) {
+    console.log("DATA IS UP TO DATE");
+    fetchedStandingData = JSON.parse(sessionStorage.getItem(division));
+    return fetchedStandingData;
+  }
+  console.log("DATA UPDATED ");
+  fetchedStandingData = await getStandings(division);
+  sessionStorage.setItem(division, JSON.stringify(fetchedStandingData));
+  return fetchedStandingData;
+};
+
+export const ordinalNum = (n) => {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
 };
 
 export const fetchMatches = async (

@@ -1,10 +1,10 @@
 import axios from "axios";
-const vercel_url = import.meta.env.VITE_VERCEL_URL;
+const vercel_url = "https://los-blancos-iota.vercel.app/api";
 const limit = 10;
 
 export const getMatches = async (category) => {
   try {
-    const response = await axios.get(vercel_url, {
+    const response = await axios.get(vercel_url + "/football", {
       params: {
         status: category,
         limit: limit,
@@ -19,12 +19,13 @@ export const getMatches = async (category) => {
 };
 
 export const getStandings = async (division) => {
-  division = "PD";
   try {
-    const response = await axios.get(
-      import.meta.env.VITE_VERCEL_URL + `/standings?${division}/standings`
-    );
-    console.log(response);
+    const response = await axios.get(vercel_url + "/standings", {
+      params: {
+        competition: division,
+      },
+    });
+    return response.data;
   } catch (error) {
     console.log(error);
   }

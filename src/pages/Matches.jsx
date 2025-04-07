@@ -12,6 +12,7 @@ import { swiperSettings } from "../utils/swiperSettings";
 import { motion } from "motion/react";
 import { PiList } from "react-icons/pi";
 import { Link } from "react-router";
+import AON from "../utils/AON";
 const Matches = () => {
   const buttons = ["Scheduled", "Finished"];
   let [selectedButton, setButton] = useState(buttons[0]);
@@ -85,7 +86,9 @@ const Matches = () => {
             <ScheduledMatches scheduled={scheduled} />
           ) : (
             <div className="mx-5 mb-5">
-              <LastMatch finished={finished} />
+              <AON once={true}>
+                <LastMatch finished={finished} />
+              </AON>
               <FinishedMatch finished={finished} />
             </div>
           )}
@@ -261,56 +264,57 @@ const FinishedMatch = ({ finished }) => {
 const ScheduledMatches = ({ scheduled }) => {
   return (
     <div>
-      <div className="mb-5 font-bold narrow text-[14pt] mx-5">Next Match</div>
-
-      <div className="bg-gray-200/50 relative p-10 rounded-3xl flex justify-around items-center overflow-hidden mx-5">
-        <div className="absolute left-[-130px] hidden lg:block size-80   grayscale opacity-10">
-          <img
-            className="object-contain h-full w-full"
-            src={scheduled[0] && scheduled[0].homeTeam.crest}
-          />
-        </div>
-        <div className="absolute right-[-130px] hidden lg:block size-80  grayscale opacity-10">
-          <img
-            className="object-cover h-full w-full"
-            src={scheduled[0] && scheduled[0].awayTeam.crest}
-          />
-        </div>
-
-        <div className="xl:max-w-30 max-w-15 place-items-center">
-          <div className="mb-2">Home</div>
-          <img
-            className="object-contain"
-            src={scheduled[0] && scheduled[0].homeTeam.crest}
-          />
-          <div className="font-bold narrow text-[15pt] mt-2">
-            {scheduled[0] && scheduled[0].homeTeam.tla}
-          </div>
-        </div>
-        <div className="place-items-center">
-          <div>
+      <AON once={true}>
+        <div className="mb-5 font-bold narrow text-[14pt] mx-5">Next Match</div>
+        <div className="bg-gray-200/50 relative p-10 rounded-3xl flex justify-around items-center overflow-hidden mx-5">
+          <div className="absolute left-[-130px] hidden lg:block size-80   grayscale opacity-10">
             <img
-              className="xl:max-w-15 max-w-8"
-              src={scheduled[0] && scheduled[0].competition.emblem}
-              alt=""
+              className="object-contain h-full w-full"
+              src={scheduled[0] && scheduled[0].homeTeam.crest}
+            />
+          </div>
+          <div className="absolute right-[-130px] hidden lg:block size-80  grayscale opacity-10">
+            <img
+              className="object-cover h-full w-full"
+              src={scheduled[0] && scheduled[0].awayTeam.crest}
             />
           </div>
 
-          <div className="text-center  lg:text-[10pt] text-[8pt] lg:mt-5 px-2 py-1 lg:bg-black lg:text-white rounded-xl">
-            {scheduled[0] && formatDate(scheduled[0].utcDate)}
+          <div className="xl:max-w-30 max-w-15 place-items-center">
+            <div className="mb-2">Home</div>
+            <img
+              className="object-contain"
+              src={scheduled[0] && scheduled[0].homeTeam.crest}
+            />
+            <div className="font-bold narrow text-[15pt] mt-2">
+              {scheduled[0] && scheduled[0].homeTeam.tla}
+            </div>
+          </div>
+          <div className="place-items-center">
+            <div>
+              <img
+                className="xl:max-w-15 max-w-8"
+                src={scheduled[0] && scheduled[0].competition.emblem}
+                alt=""
+              />
+            </div>
+
+            <div className="text-center  lg:text-[10pt] text-[8pt] lg:mt-5 px-2 py-1 lg:bg-black lg:text-white rounded-xl">
+              {scheduled[0] && formatDate(scheduled[0].utcDate)}
+            </div>
+          </div>
+          <div className="xl:max-w-30 max-w-15 place-items-center">
+            <div className="mb-2">Away</div>
+            <img
+              className="object-contain"
+              src={scheduled[0] && scheduled[0].awayTeam.crest}
+            />
+            <div className="font-bold narrow text-[15pt] mt-2">
+              {scheduled[0] && scheduled[0].awayTeam.tla}
+            </div>
           </div>
         </div>
-        <div className="xl:max-w-30 max-w-15 place-items-center">
-          <div className="mb-2">Away</div>
-          <img
-            className="object-contain"
-            src={scheduled[0] && scheduled[0].awayTeam.crest}
-          />
-          <div className="font-bold narrow text-[15pt] mt-2">
-            {scheduled[0] && scheduled[0].awayTeam.tla}
-          </div>
-        </div>
-      </div>
+      </AON>
       <br />
       <div className="mb-5 font-bold narrow text-[14pt] mx-5">Scheduled</div>
       <Swiper {...swiperSettings}>
