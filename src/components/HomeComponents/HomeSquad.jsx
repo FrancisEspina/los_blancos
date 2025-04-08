@@ -2,7 +2,7 @@ import React from "react";
 import mbappe from "../../assets/images/squad_home.webp";
 import ButtonLink from "../ButtonLink";
 import Marquee from "react-fast-marquee";
-import players from "../../data/players";
+import { firstTeam } from "../../data/players";
 import AON from "../../utils/AON";
 import AOS from "../../utils/AOS";
 const HomeSquad = () => {
@@ -43,7 +43,7 @@ const HomeSquad = () => {
           </div>
         </div>
         <Marquee className=" h-32" direction="right" autoFill={true}>
-          {players.map((player) => (
+          {firstTeam.map((player) => (
             <div className="mx-5 narrow text-[42pt] font-[600] text-black/25">
               {surname(player.name)}
             </div>

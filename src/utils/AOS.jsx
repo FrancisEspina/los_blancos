@@ -14,7 +14,7 @@ const AOS = ({
     : { initial: { opacity: 1, y: "100%" }, animate: { opacity: 1, y: 0 } };
 
   return (
-    <div className="h-fit overflow-clip">
+    <div className="h-fit overflow-clip ">
       <motion.div
         {...animationConfig}
         transition={{

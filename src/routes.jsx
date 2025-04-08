@@ -5,7 +5,8 @@ import NavBar from "./components/NavBar";
 
 import Matches from "./pages/Matches";
 import Standings from "./pages/Standings";
-
+import Squad from "./pages/Squad";
+import FourOFour from "./components/FourOFour"
 import { ScrollRestoration } from "react-router-dom";
 import Footer from "../src/components/Footer";
 const Layout = () => (
@@ -23,9 +24,10 @@ const routes = [
   {
     path: "/",
     element: <Layout />,
+    errorElement: <FourOFour />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/squad", element: <div>SQUAD</div> },
+      { path: "/squad", element: <Squad /> },
       { path: "/the-club", element: <div>CLUB</div> },
       { path: "/trophies", element: <div>TROPHIES</div> },
       { path: "/matches", element: <Matches /> },

@@ -13,6 +13,7 @@ import { motion } from "motion/react";
 import { PiList } from "react-icons/pi";
 import { Link } from "react-router";
 import AON from "../utils/AON";
+import ButtonGroup from "../components/ButtonGroup";
 const Matches = () => {
   const buttons = ["Scheduled", "Finished"];
   let [selectedButton, setButton] = useState(buttons[0]);
@@ -53,21 +54,11 @@ const Matches = () => {
       <div className="">
         <div className="max-w-[1600px] mx-auto pb-12">
           <div className="justify-end items-center gap-2 flex mx-5">
-            <div className="flex gap-2  ring-2 ring-indigo-100 w-fit p-[7px] rounded-xl ">
-              {buttons.map((button) => (
-                <>
-                  <motion.div
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => setButton(button)}
-                    className={`${
-                      button == selectedButton && "bg-indigo-100 ring-2 "
-                    } ring-offset-2 ring-indigo-200 px-2 py-1 rounded-md text-[8pt] duration-300 cursor-pointer`}
-                  >
-                    {button}
-                  </motion.div>
-                </>
-              ))}
-            </div>
+            <ButtonGroup
+              buttons={buttons}
+              selectedButton={selectedButton}
+              action={setButton}
+            />
 
             <Link to={"/standings"}>
               <motion.div
