@@ -136,7 +136,7 @@ const LeagueTable = ({ league, setLeague }) => {
                         }`}
                       >
                         <td className="px-3 py-3  max-w-40">
-                          <AOS delay={idx / 10}>
+                          <AOS delay={idx / 20}>
                             <div className="flex items-center gap-2 my-1">
                               <div className="bg-gray-200 size-5 items-center flex justify-center md:text-[9pt] text-[6pt] text-center rounded-sm">
                                 {entry.position}

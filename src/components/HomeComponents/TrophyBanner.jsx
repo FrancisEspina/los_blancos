@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import trophies from "../../data/trophies";
-import { Link } from "react-router";
-import Bounce from "../Bounce";
-import { motion } from "motion/react";
+
 import ButtonLink from "../ButtonLink";
 const TrophyBanner = () => {
   let [focused, setFocus] = useState(null);

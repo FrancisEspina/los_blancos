@@ -5,6 +5,7 @@ import TrophyBanner from "../components/HomeComponents/TrophyBanner";
 import HomeSquad from "../components/HomeComponents/HomeSquad";
 import HomeUpcomingMatches from "../components/HomeComponents/HomeUpcomingMatches";
 import HomeSponsors from "../components/HomeComponents/HomeSponsors";
+import VideoBanner from "../components/HomeComponents/VideoBanner";
 const Home = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const Home = () => {
       <HomeSquad />
       <HomeUpcomingMatches />
       <HomeSponsors />
+      <VideoBanner />
     </>
   );
 };
