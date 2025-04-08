@@ -4,6 +4,7 @@ import { firstTeam } from "../data/players";
 import ButtonGroup from "../components/ButtonGroup";
 import AOS from "../utils/AOS";
 import { Link } from "react-router";
+import AON from "../utils/AON";
 const buttons = ["All", "Goalkeeper", "Defender", "Midfielder", "Forward"];
 const Squad = () => {
   let [selectedButton, setSelected] = useState(buttons[0]);
@@ -47,11 +48,12 @@ const Squad = () => {
               );
 
               if (filteredByPosition.length === 0) return null; // Skip if there are no players for that position
-
               return (
                 <div key={position} className="space-y-6">
                   {/* Header for each position */}
-                  <h2 className="text-2xl font-semibold">{position}</h2>
+                  <AON once={true}>
+                    <h2 className="text-2xl font-semibold">{position}</h2>
+                  </AON>
 
                   {/* Player grid for each position */}
                   <div className="grid md:grid-cols-3 grid-cols-1 2xl:grid-cols-5 lg:grid-cols-4 gap-7 mb-12">
