@@ -5,6 +5,12 @@ import ButtonGroup from "../components/ButtonGroup";
 import AOS from "../utils/AOS";
 import { Link } from "react-router";
 import AON from "../utils/AON";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { swiperSettings } from "../utils/swiperSettings";
+
+import "swiper/css";
+
 const buttons = ["All", "Goalkeeper", "Defender", "Midfielder", "Forward"];
 const Squad = () => {
   let [selectedButton, setSelected] = useState(buttons[0]);
@@ -52,23 +58,33 @@ const Squad = () => {
                 <div key={position} className="space-y-6">
                   {/* Header for each position */}
                   <AON once={true}>
-                    <h2 className="text-2xl font-semibold">{position}</h2>
+                    <h2 className="text-2xl font-semibold narrow">
+                      {position}
+                    </h2>
                   </AON>
 
                   {/* Player grid for each position */}
-                  <div className="grid md:grid-cols-3 grid-cols-1 2xl:grid-cols-5 lg:grid-cols-4 gap-7 mb-12">
-                    {filteredByPosition.map((player, idx) => (
-                      <div
-                        key={player.number}
-                        className="hover:scale-102 duration-200 "
-                      >
-                        <AOS delay={idx / 50}>
-                          <Link to={`/squad/${player.name}`}>
-                            <PlayerCard player={player} />
-                          </Link>
-                        </AOS>
-                      </div>
-                    ))}
+                  {/* <div className="grid md:grid-cols-3 grid-cols-1 2xl:grid-cols-5 lg:grid-cols-4 gap-7 mb-12"> */}
+
+                  <div className=" md:grid-cols-3 grid-cols-1 2xl:grid-cols-5 lg:grid-cols-4 gap-7 mb-12">
+                    <Swiper {...swiperSettings} loop={true} freeMode={true}>
+                      {filteredByPosition.map((player, idx) => (
+                        <>
+                          <SwiperSlide>
+                            <div
+                              key={player.number}
+                              className="hover:scale-102 duration-200 "
+                            >
+                              <AOS delay={idx / 50}>
+                                <Link to={`/squad/${player.name}`}>
+                                  <PlayerCard player={player} />
+                                </Link>
+                              </AOS>
+                            </div>
+                          </SwiperSlide>
+                        </>
+                      ))}
+                    </Swiper>
                   </div>
                 </div>
               );
@@ -93,13 +109,16 @@ const Squad = () => {
 const PlayerCard = ({ player }) => {
   return (
     <>
-      <div className="overflow-hidden  bg-gray-200/50 rounded-2xl ">
-        <div className="">
+      <div className="overflow-hidden  bg-gray-200/50 rounded-3xl mx-2  ">
+        <div className=" overflow-hidden">
           {player.img && (
-            <img className="w-full h-full object-cover " src={player.img}></img>
+            <img
+              className="w-full h-full  object-cover "
+              src={player.img}
+            ></img>
           )}
         </div>
-        <div className="px-5 pb-5 pt-3 flex items-center justify-between gap-2">
+        <div className="px-5 pb-5 pt-3 flex items-center justify-between gap-2 ">
           <div>
             <div className="narrow font-bold text-gray-600 text-[15pt]">
               {player.name}

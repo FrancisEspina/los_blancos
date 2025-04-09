@@ -17,7 +17,7 @@ export const firstTeam = [
     nationality: "Belgium",
     date_of_birth: "1992-05-11",
     position: "Goalkeeper",
-    specific_position: "Starting Goalkeeper",
+    specific_position: "Goalkeeper",
     height: 2.0,
     weight: 96,
     contract_until: "2026",
@@ -32,7 +32,7 @@ export const firstTeam = [
     nationality: "Ukraine",
     date_of_birth: "1999-02-11",
     position: "Goalkeeper",
-    specific_position: "Backup Goalkeeper",
+    specific_position: "Goalkeeper",
     height: 1.91,
     weight: 80,
     contract_until: "2030",
@@ -138,6 +138,22 @@ export const firstTeam = [
     career: ["Real Madrid", "Lyon", "Le Havre"],
     flag: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg",
     img: playerImages["mendy"], // Access the image here
+  },
+
+  {
+    number: 3,
+    name: "Fran García",
+    full_name: "Francisco García",
+    nationality: "Spain",
+    date_of_birth: "1999-03-09",
+    position: "Defender",
+    specific_position: "Left Back",
+    height: 1.7,
+    weight: 65,
+    contract_until: "2025",
+    career: ["Real Madrid", "Rayo Vallecano", "Albacete"],
+    flag: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg",
+    img: playerImages["fran_garcia"], // Access the image here
   },
 
   // Midfielders

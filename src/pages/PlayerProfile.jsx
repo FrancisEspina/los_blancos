@@ -3,12 +3,17 @@ import { firstTeam } from "../data/players";
 import { useParams } from "react-router";
 import ButtonLink from "../components/ButtonLink";
 import { formatDate } from "../utils/services";
+import BasicTimeline from "../components/BasicTimeline";
+import AOS from "../utils/AOS";
+import AON from "../utils/AON";
 import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
-
+  PiShield,
+  PiShieldDuotone,
+  PiSoccerBall,
+  PiSoccerBallDuotone,
+  PiUserCheckDuotone,
+  PiUserDuotone,
+} from "react-icons/pi";
 const PlayerProfile = () => {
   const { player_name } = useParams();
   const player = firstTeam.find((a) => a.name == player_name);
@@ -46,15 +51,25 @@ const PlayerDetails = ({ player }) => {
           </div>
           <div className=" w-full mt-5 lg:grid-cols-2 xl:grid-cols-3  grid-cols-1 grid gap-5">
             <div className="">
-              <Card title={"Personal Profile"}>
+              <Card IconName={PiUserDuotone} title={"Personal Profile"}>
                 <div className="grid-cols-2 grid gap-x-5">
                   <Labels label={"Full Name"} content={player.full_name} />
-                  <Labels label={"Nationality"} content={player.nationality} />
+                  <Labels
+                    label={"Nationality"}
+                    content={
+                      <>
+                        <div className="flex items-center gap-1">
+                          <img src={player.flag} className="size-3"></img>
+                          <div>{player.nationality}</div>
+                        </div>
+                      </>
+                    }
+                  />
                   <Labels
                     label={"Birthdate"}
                     content={formatDate(player.date_of_birth, true)}
                   />
-                  <div className="flex gap-5">
+                  <div className="flex gap-10">
                     <Labels label={"Height"} content={player.height + " m"} />
                     <Labels label={"Weight"} content={player.weight + " kg"} />
                   </div>
@@ -63,29 +78,34 @@ const PlayerDetails = ({ player }) => {
             </div>
 
             <div className="">
-              <Card title={"Player Profile"}>
-                <div className="grid-cols-2 grid gap-x-5">
-                  <Labels label={"Kit Number"} content={player.number} />
-                  <Labels label={"Position"} content={player.position} />
-                  <Labels
-                    label={"Preferred Position"}
-                    content={player.specific_position}
-                  />
-                  <Labels label={"Contract"} content={player.contract_until} />
-                </div>
-              </Card>
+              <AON>
+                <Card IconName={PiSoccerBallDuotone} title={"Player Profile"}>
+                  <div className="grid-cols-2 grid gap-x-5">
+                    <Labels label={"Kit Number"} content={player.number} />
+                    <Labels label={"Position"} content={player.position} />
+                    <Labels
+                      label={"Preferred Position"}
+                      content={player.specific_position}
+                    />
+                    <Labels
+                      label={"Contract"}
+                      content={player.contract_until}
+                    />
+                  </div>
+                </Card>
+              </AON>
             </div>
 
             <div className="">
-              <Card title={"Career"}>
-                <div className="grid-cols-2 grid gap-x-5">
-                  <div>
-                    {player.career.map((career) => (
-                      <div className="narrow">{career}</div>
-                    ))}
+              <AON>
+                <Card IconName={PiShieldDuotone} title={"Career"}>
+                  <div className="grid-cols-2 grid gap-x-5 narrow  text-[10pt] ">
+                    <div>
+                      <BasicTimeline items={player.career} />
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </AON>
             </div>
           </div>
         </div>
@@ -93,27 +113,29 @@ const PlayerDetails = ({ player }) => {
     </>
   );
 };
-
 const Labels = ({ label, content }) => {
   return (
     <>
       <div className="narrow mb-2">
         <div className="text-gray-500 text-[9pt]">{label}</div>
-        <div className="font-bold">{content}</div>
+        <div className="font-bold text-[11pt]">{content}</div>
       </div>
     </>
   );
 };
 
-const Card = ({ title, children }) => {
+const Card = ({ title, children, IconName }) => {
   return (
-    <div className="p-5 bg-gray-200/50 rounded-3xl h-[200px]">
-      <div className="narrow text-[14pt] md:text-[16pt] font-bold mb-3">
-        {title}
-      </div>
+    <>
+      <div className="p-5 bg-gray-200/50 rounded-3xl h-[200px]  hover:scale-101 cursor-pointer duration-200 hover:shadow-xl ">
+        <div className="narrow text-[13pt] md:text-[14pt] font-bold mb-3 flex gap-2 items-center">
+          {IconName && <IconName className="size-5"></IconName>}
+          <p>{title}</p>
+        </div>
 
-      <div>{children}</div>
-    </div>
+        <div className="mx-3 overflow-auto max-h-[120px]">{children}</div>
+      </div>
+    </>
   );
 };
 
