@@ -2,7 +2,6 @@ import Home from "./pages/Home";
 
 import { Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar";
-
 import Matches from "./pages/Matches";
 import Standings from "./pages/Standings";
 import Squad from "./pages/Squad";
@@ -10,6 +9,7 @@ import FourOFour from "./components/FourOFour";
 import { ScrollRestoration } from "react-router-dom";
 import Footer from "../src/components/Footer";
 import PlayerProfile from "./pages/PlayerProfile";
+
 const Layout = () => (
   <>
     <ScrollRestoration />

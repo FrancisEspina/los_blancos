@@ -1,6 +1,13 @@
 // players.js
 import playerImages from "./player_images";
 
+export const preloadPlayerImages = () => {
+  Object.values(playerImages).forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+
 export const firstTeam = [
   // Goalkeepers
   {
