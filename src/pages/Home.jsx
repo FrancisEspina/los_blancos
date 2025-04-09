@@ -6,10 +6,19 @@ import HomeSquad from "../components/HomeComponents/HomeSquad";
 import HomeUpcomingMatches from "../components/HomeComponents/HomeUpcomingMatches";
 import HomeSponsors from "../components/HomeComponents/HomeSponsors";
 import VideoBanner from "../components/HomeComponents/VideoBanner";
-import { preloadPlayerImages } from "../data/players";
+import { firstTeam } from "../data/players";
+
+export const preloadPlayerImages = () => {
+  firstTeam.forEach((player) => {
+    const img = new Image();
+    img.src = player.img;
+  });
+};
+
 const Home = () => {
   useEffect(() => {
     preloadPlayerImages();
+    console.log("PRELOADED");
   }, []);
 
   return (
