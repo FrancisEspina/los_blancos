@@ -137,7 +137,7 @@ const LastMatch = ({ finished }) => {
           <div className="flex justify-around items-center ">
             <div
               className={`lg:text-[50pt] text-[32pt]  font-bold ${
-                finished[0].score.winner == "HOME_TEAM"
+                finished[0] && finished[0].score.winner == "HOME_TEAM"
                   ? "text-black"
                   : "text-gray-500 "
               }  `}
@@ -151,12 +151,12 @@ const LastMatch = ({ finished }) => {
                 {finished[0] && formatDate(finished[0].utcDate)}
               </div>
               <div className="p-2 text-[8pt] hidden md:block">
-                MATCHDAY {finished[0].matchday}
+                MATCHDAY {finished[0] ? finished[0].matchday : "0"}
               </div>
             </div>
             <div
               className={`lg:text-[50pt] text-[32pt]  font-bold ${
-                finished[0].score.winner == "AWAY_TEAM"
+                finished[0] && finished[0].score.winner == "AWAY_TEAM"
                   ? "text-black"
                   : "text-gray-500 "
               }  `}

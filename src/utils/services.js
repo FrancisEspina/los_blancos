@@ -1,10 +1,10 @@
 import { getMatches, getStandings } from "./api";
 
-export const formatDate = (utcString) => {
+export const formatDate = (utcString, date_only) => {
   const date = new Date(utcString);
 
   // Format options
-  const options = {
+  const fullOptions = {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -13,7 +13,13 @@ export const formatDate = (utcString) => {
     hour12: true,
   };
 
-  return date.toLocaleString("en-US", options);
+  const dateOnly = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+
+  return date.toLocaleString("en-US", date_only ? dateOnly : fullOptions);
 };
 
 export const formatYear = (utcString) => {

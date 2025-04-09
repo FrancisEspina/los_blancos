@@ -47,13 +47,14 @@ const HomeUpcomingMatches = () => {
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
             >
-              {upcoming.map((match) => (
-                <>
-                  <SwiperSlide>
-                    <MatchCard match={match} />
-                  </SwiperSlide>
-                </>
-              ))}
+              {upcoming &&
+                upcoming.map((match) => (
+                  <>
+                    <SwiperSlide>
+                      <MatchCard match={match} />
+                    </SwiperSlide>
+                  </>
+                ))}
             </Swiper>
           </div>
           <div className="w-fit ml-auto mx-5">
