@@ -22,15 +22,22 @@ const Trophies = () => {
           </div>
         </div>
       </div>
-      <div className=" min-h-screen mt-5">
-        <div className="grid grid-cols-2 gap-2 justify-center  max-w-[1500px] mx-auto">
+      <div className=" min-h-screen mt-5 mx-5 mb-12">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 justify-center  max-w-[1500px] mx-auto">
           {trophies.map((trophy) => (
-            <div className="rounded-lg">
-              <img
-                className="h-full w-full object-cover"
-                src={trophy.image}
-                alt=""
-              />
+            <div className="rounded-3xl flex  shadow bg-gray-200/50 items-center overflow-hidden py-5 px-10">
+              <div className="max-w-[150px] ">
+                <img
+                  className="h-full w-full object-cover mix-blend-multiply
+                  "
+                  src={trophy.image}
+                  alt=""
+                />
+              </div>
+              <div className="narrow font-bold">{trophy.name}</div>
+              <div className="narrow text-indigo-600 font-bold text-[52pt] ml-auto">
+                {trophy.total}
+              </div>
             </div>
           ))}
         </div>
