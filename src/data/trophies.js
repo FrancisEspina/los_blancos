@@ -22,7 +22,7 @@ const trophies = [
     total: 15,
     description:
       "The most prestigious club competition in European football. Winning it cements a club’s place among the elite of the sport.",
-    image: "",
+    image: trophyImages["ucl"],
   },
   {
     name: "FIFA Club World Cups",
@@ -30,7 +30,7 @@ const trophies = [
     total: 9,
     description:
       "This tournament brings together the champion clubs from each continent. Winning it proves global supremacy in club football.",
-    image: "",
+    image: trophyImages["club_world_cup"],
   },
   {
     name: "European Super Cups",
@@ -38,7 +38,7 @@ const trophies = [
     total: 6,
     description:
       "Held annually between the UEFA Champions League and Europa League winners. It serves as the curtain-raiser for the European football season.",
-    image: "",
+    image: trophyImages["e_supercup"],
   },
 
   {
@@ -47,7 +47,7 @@ const trophies = [
     total: 2,
     description:
       "Known today as the UEFA Europa League, this competition was once the top secondary European tournament. It showcases strong continental performance.",
-    image: "",
+    image: trophyImages["uefa_cups"],
   },
   {
     name: "La Liga",
@@ -55,7 +55,7 @@ const trophies = [
     total: 36,
     description:
       "Spain’s top professional league and one of the most competitive in the world. Winning La Liga is a testament to season-long dominance.",
-    image: "",
+    image: trophyImages["laliga"],
   },
   {
     name: "Spanish Cups",
@@ -63,7 +63,7 @@ const trophies = [
     total: 20,
     description:
       "Officially called the Copa del Rey, it's a knockout competition filled with drama and tradition. It’s one of Spain’s oldest and most respected trophies.",
-    image: "",
+    image: trophyImages["spanish_cup"],
   },
   {
     name: "Spanish Super Cups",
@@ -71,7 +71,7 @@ const trophies = [
     total: 13,
     description:
       "Contested between the winners of La Liga and Copa del Rey. It kicks off the Spanish football season with a high-stakes clash.",
-    image: "",
+    image: trophyImages["s_supercup"],
   },
 ];
 

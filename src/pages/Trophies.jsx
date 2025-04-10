@@ -23,10 +23,14 @@ const Trophies = () => {
         </div>
       </div>
       <div className=" min-h-screen mt-5">
-        <div className="flex gap-2 justify-center flex-wrap max-w-[1500px] mx-auto">
+        <div className="grid grid-cols-2 gap-2 justify-center  max-w-[1500px] mx-auto">
           {trophies.map((trophy) => (
             <div className="rounded-lg">
-              <img className="size-6 md:size-15" src={trophy.icon} alt="" />
+              <img
+                className="h-full w-full object-cover"
+                src={trophy.image}
+                alt=""
+              />
             </div>
           ))}
         </div>
