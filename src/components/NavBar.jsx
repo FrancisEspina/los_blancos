@@ -43,9 +43,9 @@ const NavBar = () => {
 
       {/* Navbar Top Section */}
 
-      <div className=" fixed flex items-center justify-between backdrop-blur-[10px]  w-full p-5 z-20 border-gray-300 border-b ">
+      <div className=" fixed flex items-center justify-between backdrop-blur-[10px]  w-full p-5 z-20 border-black/10 border-b ">
         {/* Logo */}
-        <div className="flex gap-3 items-center">
+        <div className="flex gap-3 items-center ">
           <Link to="/">
             <Bounce>
               <div className="max-w-10 ">
@@ -72,11 +72,15 @@ const NavBar = () => {
         </div>
 
         <div className="hidden xl:block lg:block">
-          <div className="flex gap-10 ">
+          <div className="flex gap-10  ">
             {shortLinks.map((button) => (
               <>
                 <Link to={button.path}>
-                  <Bounce>{button.nav}</Bounce>
+                  <div className="">
+                    <Bounce>
+                      <div className="">{button.nav}</div>
+                    </Bounce>
+                  </div>
                 </Link>
               </>
             ))}

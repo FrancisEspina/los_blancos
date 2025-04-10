@@ -1,14 +1,16 @@
-import Home from "./pages/Home";
-
 import { Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar";
+
+import Home from "./pages/Home";
 import Matches from "./pages/Matches";
 import Standings from "./pages/Standings";
 import Squad from "./pages/Squad";
+import PlayerProfile from "./pages/PlayerProfile";
+import Trophies from "./pages/Trophies";
+
 import FourOFour from "./components/FourOFour";
 import { ScrollRestoration } from "react-router-dom";
 import Footer from "../src/components/Footer";
-import PlayerProfile from "./pages/PlayerProfile";
 
 const Layout = () => (
   <>
@@ -31,7 +33,7 @@ const routes = [
       { path: "/squad", element: <Squad /> },
       { path: "/squad/:player_name", element: <PlayerProfile /> },
       { path: "/the-club", element: <div>CLUB</div> },
-      { path: "/trophies", element: <div>TROPHIES</div> },
+      { path: "/trophies", element: <Trophies /> },
       { path: "/matches", element: <Matches /> },
       { path: "/sponsors", element: <div>SPONSORS</div> },
       { path: "/rm-city", element: <div>RM-CITY</div> },

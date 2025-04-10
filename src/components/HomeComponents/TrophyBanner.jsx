@@ -5,13 +5,13 @@ import ButtonLink from "../ButtonLink";
 const TrophyBanner = () => {
   let [focused, setFocus] = useState(null);
   return (
-    <div className="text-center">
+    <div className="text-center ">
       <div className="min-h-6  w-fit mx-auto px-5 rounded-xl">
         <div className="bg-indigo-600 px-3 text-white rounded-xl">
           {focused && focused.name}
         </div>
       </div>
-      <div className="flex justify-between gap-x-5  my-10 max-w-[1600px] mx-auto overflow-x-auto scroll-smooth relative p-3">
+      <div className="flex justify-between gap-x-5  my-10 max-w-[1600px] mx-auto overflow-x-auto scroll-smooth relative p-3 hide-scrollbar">
         {trophies.map((trophy) => (
           <div
             onMouseOver={() => setFocus(trophy)}

@@ -121,19 +121,11 @@ const LastMatch = ({ finished }) => {
             className="object-contain"
             src={finished[0] && finished[0].homeTeam.crest}
           />
-          <div className="font-bold narrow text-[15pt] mt-2">
+          <div className="font-bold narrow md:text-[15pt] mt-2">
             {finished[0] && finished[0].homeTeam.tla}
           </div>
         </div>
         <div className="basis-100 ">
-          <div className="place-items-center mb-5">
-            <img
-              className="xl:max-w-10 max-w-8 "
-              src={finished[0] && finished[0].competition.emblem}
-              alt=""
-            />
-          </div>
-
           <div className="flex justify-around items-center ">
             <div
               className={`lg:text-[50pt] text-[32pt]  font-bold ${
@@ -146,7 +138,14 @@ const LastMatch = ({ finished }) => {
             </div>
 
             <div className=" lg:text-[14pt] text-[9pt] text-center">
-              <div className="text-[11pt] mb-2">Full-Time</div>
+              <div className=" place-items-center mb-3 ">
+                <img
+                  className="xl:max-w-10 max-w-8 "
+                  src={finished[0] && finished[0].competition.emblem}
+                  alt=""
+                />
+              </div>
+              <div className="text-[9pt] md:text-[10pt]  mb-2">Full-Time</div>
               <div className="hidden lg:block text-[9pt] bg-black text-white rounded-lg p-1">
                 {finished[0] && formatDate(finished[0].utcDate)}
               </div>
@@ -172,7 +171,7 @@ const LastMatch = ({ finished }) => {
             className="object-contain"
             src={finished[0] && finished[0].awayTeam.crest}
           />
-          <div className="font-bold narrow text-[15pt] mt-2">
+          <div className="font-bold narrow md:text-[15pt] mt-2 ">
             {finished[0] && finished[0].awayTeam.tla}
           </div>
         </div>
