@@ -51,34 +51,39 @@ const PlayerDetails = ({ player }) => {
           </div>
           <div className=" w-full mt-5 lg:grid-cols-2 xl:grid-cols-3  grid-cols-1 grid gap-5">
             <div className="">
-              <Card IconName={PiUserDuotone} title={"Personal Profile"}>
-                <div className="grid-cols-2 grid gap-x-5">
-                  <Labels label={"Full Name"} content={player.full_name} />
-                  <Labels
-                    label={"Nationality"}
-                    content={
-                      <>
-                        <div className="flex items-center gap-1">
-                          <img src={player.flag} className="size-3"></img>
-                          <div>{player.nationality}</div>
-                        </div>
-                      </>
-                    }
-                  />
-                  <Labels
-                    label={"Birthdate"}
-                    content={formatDate(player.date_of_birth, true)}
-                  />
-                  <div className="flex gap-10">
-                    <Labels label={"Height"} content={player.height + " m"} />
-                    <Labels label={"Weight"} content={player.weight + " kg"} />
+              <AON delay={0}>
+                <Card IconName={PiUserDuotone} title={"Personal Profile"}>
+                  <div className="grid-cols-2 grid gap-x-5">
+                    <Labels label={"Full Name"} content={player.full_name} />
+                    <Labels
+                      label={"Nationality"}
+                      content={
+                        <>
+                          <div className="flex items-center gap-1">
+                            <img src={player.flag} className="size-3"></img>
+                            <div>{player.nationality}</div>
+                          </div>
+                        </>
+                      }
+                    />
+                    <Labels
+                      label={"Birthdate"}
+                      content={formatDate(player.date_of_birth, true)}
+                    />
+                    <div className="flex gap-10">
+                      <Labels label={"Height"} content={player.height + " m"} />
+                      <Labels
+                        label={"Weight"}
+                        content={player.weight + " kg"}
+                      />
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </AON>
             </div>
 
             <div className="">
-              <AON>
+              <AON delay={0.1}>
                 <Card IconName={PiSoccerBallDuotone} title={"Player Profile"}>
                   <div className="grid-cols-2 grid gap-x-5">
                     <Labels label={"Kit Number"} content={player.number} />
@@ -97,7 +102,7 @@ const PlayerDetails = ({ player }) => {
             </div>
 
             <div className="">
-              <AON>
+              <AON delay={0.2}>
                 <Card IconName={PiShieldDuotone} title={"Career"}>
                   <div className="grid-cols-2 grid gap-x-5 narrow  text-[10pt] ">
                     <div>
