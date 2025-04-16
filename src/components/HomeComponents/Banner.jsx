@@ -2,6 +2,7 @@ import React from "react";
 import banner_image from "../../assets/images/banner-2.jpg";
 import Button from "../../components/Button";
 import AON from "../../utils/AON";
+import logo from "../../assets/icons/real_madrid.png";
 const Banner = () => {
   return (
     <>
@@ -13,7 +14,12 @@ const Banner = () => {
           <div className=" p-5 flex items-center ">
             <div>
               <AON>
-                <div className="narrow text-[32pt] font-[600]">Real Madrid</div>
+                <div className="flex justify-between items-end">
+                  <div className="narrow text-[32pt] font-[600]">
+                    Real Madrid
+                  </div>
+                  <img src={logo} className="max-w-20" />
+                </div>
               </AON>
               <AON>
                 <p className="text-lg narrow">More than a Club</p>

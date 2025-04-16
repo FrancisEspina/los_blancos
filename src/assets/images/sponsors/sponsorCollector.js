@@ -25,3 +25,4 @@ const regional_sponsors = import.meta.glob(`./regional_sponsors/*.{svg,webp}`, {
 export const regionalSponsors = Object.values(regional_sponsors).map(
   (img) => img.default
 );
+
