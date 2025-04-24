@@ -8,6 +8,7 @@ import Squad from "./pages/Squad";
 import PlayerProfile from "./pages/PlayerProfile";
 import Trophies from "./pages/Trophies";
 import TheClub from "./pages/TheClub";
+import Sponsors from "./pages/Sponsors";
 
 import FourOFour from "./components/FourOFour";
 import { ScrollRestoration } from "react-router-dom";
@@ -36,7 +37,7 @@ const routes = [
       { path: "/the-club", element: <TheClub /> },
       { path: "/trophies", element: <Trophies /> },
       { path: "/matches", element: <Matches /> },
-      { path: "/sponsors", element: <div>SPONSORS</div> },
+      { path: "/sponsors", element: <Sponsors /> },
       { path: "/rm-city", element: <div>RM-CITY</div> },
       { path: "/standings", element: <Standings /> },
     ],

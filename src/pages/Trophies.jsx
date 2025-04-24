@@ -74,7 +74,7 @@ const TrophyCard = ({ trophy, setOpen }) => {
           setOpen(trophy);
         }}
       >
-        <div className="rounded-3xl cursor-pointer flex  shadow-indigo-600/50 hover:shadow-lg duration-200 bg-gray-200/50 items-center  overflow-hidden py-5 px-10 hover:scale-101">
+        <div className="rounded-3xl cursor-pointer flex shadow-indigo-600/50 hover:shadow-lg duration-200 bg-gray-200/50 items-center  overflow-hidden py-5 px-10 hover:scale-101">
           <div className="md:max-w-[150px] max-w-[60px] ">
             <img
               className="h-full w-full object-cover mix-blend-multiply

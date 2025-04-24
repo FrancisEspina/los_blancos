@@ -43,7 +43,7 @@ const NavBar = () => {
 
       {/* Navbar Top Section */}
 
-      <div className=" fixed flex items-center justify-between backdrop-blur-[10px]   w-full p-5 z-20 border-black/10 border-b ">
+      <div className=" fixed flex items-center justify-between backdrop-blur-[10px]  w-full p-5 z-20 border-black/10 border-b ">
         {/* Logo */}
         <div className="flex gap-3 items-center ">
           <Link to="/">
