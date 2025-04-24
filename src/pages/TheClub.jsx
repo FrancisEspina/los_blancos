@@ -112,19 +112,25 @@ const TheClub = () => {
 
           <ClubGalacticos />
           <br />
-          <div className="title relative h-6 opacity-40">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={year}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="absolute w-full  "
-              >
-                {years[year]}
-              </motion.div>
-            </AnimatePresence>
+          <div>
+            <div className="">
+              <Title title="Timeline" />
+            </div>
+            <br />
+            <div className="title relative  h-6 opacity-40">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={year}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute w-full  "
+                >
+                  {years[year]}
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
           <Slider
             defaultValue={year}
